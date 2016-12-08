@@ -1,0 +1,3 @@
+[submodule "module/ksd-store"]
+	path = module/ksd-store
+	url = https://github.com/irvin770101/cfc-user.git
