@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::group(['namespace' => 'Web'],function() {
     
     Route::get('/test', 'UserController@test');
+    Route::get('/test2', 'UserController@test2');
+    /* 登入畫面 */
+    Route::get('/login', 'UserController@login');
 
 
 });

@@ -17,4 +17,14 @@ class UserController extends Controller
         $this->userSer->addUser('');
         return 'add';
     }
+    
+    public function test2(){
+        $user = $this->userSer->verify('irvin','123456');
+        dd($user);
+        
+    }
+    
+    public function login(){
+        return view('web.login.index');
+    }
 }
