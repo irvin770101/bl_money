@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/test', function () {
+//    return 'test';
+//});
+
+Route::group(['namespace' => 'Web'],function() {
+    
+    Route::get('/test', 'UserController@test');
+
+
+});
