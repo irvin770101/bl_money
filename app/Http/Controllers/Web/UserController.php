@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use CFC\User\Services\UserService;
-
+use Redirect;
+use Session;
 class UserController extends Controller
 {
     protected $userSer;
@@ -31,9 +32,14 @@ class UserController extends Controller
     public function loginCheck(Request $reauest){
         $account  = $reauest->input('account');
         $password = $reauest->input('password');
-        dd($password);
         
-        $user = $this->userSer->verify('irvin','123456');
+        $user = $this->userSer->verify($account,$password);
+        if($user){
+            return '登入成功!!';
+        }
+        Session::flash('showMessage', "帳號或密碼錯誤!!");
+        return back();
+        
         
     }
 }

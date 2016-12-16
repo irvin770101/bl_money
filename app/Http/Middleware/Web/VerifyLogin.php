@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Web;
 
 use Closure;
-
+use Validator;
+use Session;
 class VerifyLogin
 {
     /**
@@ -15,11 +16,16 @@ class VerifyLogin
      */
     public function handle($request, Closure $next)
     {
-        $this->validate($request, [
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
+
+        $validator = Validator::make($request->all(), [
+            'account' => 'required',
+            'password'  => 'required',
         ]);
 
+        if ($validator->fails()) {
+            Session::flash('showMessage', "請輸入帳號或密碼!!");
+            return back();
+        }
         return $next($request);
     }
 

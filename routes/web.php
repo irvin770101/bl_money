@@ -24,8 +24,14 @@ Route::group(['namespace' => 'Web'],function() {
     Route::get('/test', 'UserController@test');
     Route::get('/test2', 'UserController@test2');
     /* 登入畫面 */
-    Route::get('/login', 'UserController@login');
+    Route::get('/login', function(){
+        return view('web.login.index',[
+            'showMessage' => Session::get('showMessage')
+        ]
+                );
+    });
     /* 登入 */
-    Route::post('/login/check', 'UserController@loginCheck');
+    Route::post('/login/check', 'UserController@loginCheck')
+            ->middleware('verify.login');
 
 });
