@@ -14,13 +14,13 @@
 <body>
 
     <!--頁首-->
-    @include('layouts.web.header')    
+    @include('layout.web.header')    
     
     <!--內容-->
     @yield('content')
     
     <!--頁尾-->
-    @include('layouts.web.footer')    
+    @include('layout.web.footer')    
     @yield('post-scripts')
 </body>
 

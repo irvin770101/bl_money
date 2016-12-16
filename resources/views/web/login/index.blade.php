@@ -1,5 +1,6 @@
+@extends('layout.web')
 
-        
+@section('content')        
 <div class="row" style="padding-top: 15%">
   <div class="col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1">
     <div class="login-panel panel panel-default">
@@ -24,3 +25,4 @@
     </div>
   </div>
 </div>  
+@endsection
