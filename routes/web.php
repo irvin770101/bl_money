@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Web'],function() {
     Route::get('/test2', 'UserController@test2');
     /* 登入畫面 */
     Route::get('/login', 'UserController@login');
-
+    /* 登入 */
+    Route::post('/login/check', 'UserController@loginCheck');
 
 });

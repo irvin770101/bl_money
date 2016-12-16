@@ -27,4 +27,13 @@ class UserController extends Controller
     public function login(){
         return view('web.login.index');
     }
+    
+    public function loginCheck(Request $reauest){
+        $account  = $reauest->input('account');
+        $password = $reauest->input('password');
+        dd($password);
+        
+        $user = $this->userSer->verify('irvin','123456');
+        
+    }
 }

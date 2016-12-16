@@ -1,99 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
+
         
-        <link href="{{elixir('css/app.css')}}" media="all" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>        
-        
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+<div class="row" style="padding-top: 15%">
+  <div class="col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1">
+    <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ trans('web_info.system_name') }} {{ trans('web/login.login_text') }}</h3>
         </div>
-    </body>
-</html>
+        <div class="panel-body">
+            <form action="{{action('Web\UserController@loginCheck')}}" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <fieldset>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="{{ trans('web/login.account_text') }}" name="account" type="text" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="{{ trans('web/login.password_text') }}" name="password" type="password" value="">
+                    </div>
+                    <!-- Change this to a button or input when using this as a form -->
+                    <button class="btn btn-lg btn-success btn-block" type="submit">{{ trans('web/login.login') }}</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>  
